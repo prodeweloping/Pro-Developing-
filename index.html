@@ -1,300 +1,588 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>YouTube Thumbnail Downloader</title>
-  <link rel="icon" type="image/png" href="mppss.webp">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    :root{
-      --footer-height: 72px; /* change if you adjust footer padding */
-    }
-    html,body{
-      height:100%;
-    }
-    body {
-      font-family: 'Inter', sans-serif;
-      scroll-behavior: smooth;
-      background: #f3f4f6;
+<title>Pro Deweloping.</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-ywvJZ8..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="shortcut icon" href="pro.png.jpg" type="image/x-icon">
+<style>
+body {font-family: "Lato", sans-serif ;
+      background: #f0f2f5;
       margin: 0;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
+      padding:;
+       margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      
+}body {
+  font-family: "Lato", sans-serif;
+  background: #f0f2f5;
+  margin: 0;
+}
+.ch-btn {
+  background-color: #0b8c8c;
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  margin: 8px;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+.ch-btn:hover {
+  background-color: #066b6b;
+}
+.mySlides {display: none}
 
-    /* make sure main content doesn't go under fixed footer */
-    .page-wrapper {
-      padding-bottom: var(--footer-height);
-      width: 100%;
-    }
-
-    /* Navbar */
-    nav {
-      background: #ffffff;
-      box-shadow: 0 1px 6px rgba(0,0,0,0.06);
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 40;
-    }
-    .nav-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 12px 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    /* Popup (center) */
-    .popup {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(0.98);
-      background: #111827;
-      color: #fff;
-      padding: 14px 20px;
-      border-radius: 10px;
-      box-shadow: 0 10px 30px rgba(2,6,23,0.4);
-      display: none;
-      z-index: 9999;
-      text-align: center;
-      animation: popupIn 250ms ease;
-      max-width: 90%;
-    }
-    @keyframes popupIn {
-      from { opacity: 0; transform: translate(-50%, -55%) scale(0.98); }
-      to   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-    }
-
-    /* Loader bars */
-    .bars {
-      display:flex;
-      gap:6px;
-      align-items:center;
-      height:60px;
-      justify-content:center;
-    }
-    .bar {
-      width:6px;
-      background:#38bdf8;
-      border-radius:3px;
-      animation:pulse 1s ease-in-out infinite;
-      animation-delay: calc(var(--i) * 0.1s);
-      transform-origin:center;
-    }
-    @keyframes pulse {
-      0%,100%{ height:10px; }
-      50%{ height:50px; }
-    }
-
-    /* Main container (centered card) */
-    .card {
-      max-width: 520px;
-      margin: 110px auto 24px; /* leave space for fixed navbar */
-      background: #ffffff;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 6px 30px rgba(2,6,23,0.06);
+/* New Tools Grid */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+.tool-card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+.tool-card img {
+  width: 100%;
+  display: block;
+}
+.tool-card h3 {
+  margin: 10px 0;
+}
+.tool-card p {
+  font-size: 14px;
+  color: #555;
+  padding: 0 10px;
+}
+.tool-card a {
+  display: block;
+  background: teal;
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 0 0 10px 10px;
+}
+.tool-card:hover {
+  transform: translateY(-5px);
+}
+< --- css in footer --->
+   body{
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+   }
+    /* Follow Section */
+    .follow-section {
+      background: linear-gradient(180deg, #f7e0c7, #f3d5b5);
+      padding: 50px 20px;
       text-align: center;
     }
 
-    input[type="text"], select {
-      width: 100%;
-      padding: 10px 12px;
-      border: 1px solid #e5e7eb;
-      border-radius: 8px;
-      margin-bottom: 12px;
-      font-size: 14px;
+    .follow-section h2 {
+      font-size: 28px;
+      color: #a64b2a;
+      margin-bottom: 15px;
+      font-weight: bold;
     }
 
-    .btn-download {
-      display: inline-block;
-      width: 100%;
-      background: #ec4899; /* pink-500 */
+    .follow-section p {
+      color: #444;
+      font-size: 16px;
+      max-width: 600px;
+      margin: 0 auto 25px auto;
+      line-height: 1.6;
+    }
+
+    .follow-btn {
+      background: linear-gradient(to right, #f26b1d, #f7931e);
       color: #fff;
-      padding: 10px 14px;
-      border-radius: 8px;
+      padding: 12px 30px;
+      font-size: 18px;
+      font-weight: bold;
       border: none;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 15px;
-    }
-
-    /* Fixed footer bottom center */
-    footer.fixed-footer {
-      position: fixed;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: var(--footer-height);
-      background: #0f172a; /* gray-900 */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 30;
-      padding: 12px 16px;
-      box-shadow: 0 -4px 20px rgba(2,6,23,0.12);
-    }
-
-    footer .footer-inner {
-      max-width: 1100px;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-      color: #c7d2fe; /* light indigo-ish */
-      font-size: 14px;
-    }
-
-    footer .footer-inner a {
-      color: #a78bfa; /* indigo-300 */
+      border-radius: 50px;
       text-decoration: none;
-      font-weight: 600;
+      display: inline-block;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
     }
 
-    /* responsive tweaks */
-    @media (min-width: 640px) {
-      footer .footer-inner {
-        flex-direction: row;
-        justify-content: space-between;
+    .follow-btn:hover {
+      background: linear-gradient(to right, #e86010, #e17c0e);
+      transform: scale(1.05);
+    }
+
+    footer {
+      background: linear-gradient(135deg, #2e2e2e, #000000);
+      color: #fff;
+      padding: 40px 20px 20px 20px;
+      position: relative;
+    }
+
+    footer .footer-container {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      text-align: left;
+    }
+
+    .footer-about h3 {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #f7931e;
+     
+    }
+
+    .footer-social {
+      margin-top: 10px;
+    }
+
+    .footer-social a {
+      color: #fff;
+      margin-right: 10px;
+      font-size: 20px;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-social a:hover {
+      color: #f7931e;
+    }
+
+    .footer-links h4,
+    .footer-about h3,
+    .footer-company h4,
+    .footer-contact h4 {
+      margin-bottom: 10px;
+      font-size: 16px;
+      color: #f7931e;
+    }
+
+    .footer-links a,
+    .footer-company a {
+      display: block;
+      color: #ccc;
+      text-decoration: none;
+      margin-bottom: 8px;
+      font-size: 14px;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover,
+    .footer-company a:hover {
+      color: #fff;
+    }
+
+    .footer-contact p {
+      font-size: 14px;
+      margin: 6px 0;
+    }
+
+    .footer-contact i {
+      margin-right: 8px;
+      color: #f7931e;
+    }
+
+    .footer-bottom {
+      text-align: left;
+      margin-top: 20px;
+      border-top: 1px solid #444;
+      padding-top: 10px;
+      font-size: 13px;
+      color: #aaa;
+      text-align: center;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .footer-container {
+        text-align: left;
       }
     }
+    .text-slider-container {
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  padding: 16px 0;
+  font-size: 20px;
+  font-weight: bold;
+  overflow: hidden;
+  position: relative;
+}
 
-    /* small helper for spacing below fixed header */
-    .header-spacer { height: 64px; }
-  </style>
+.text-slide {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.text-slide.active {
+  display: block;
+  opacity: 1;
+}
+.text-slider {
+  position: relative;
+  height: 40px;
+  overflow: hidden;
+  font-size: 18px;
+  font-weight: bold;
+  color: #ff6600;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.text-slider .slide {
+  position: absolute;
+  width: 100%;
+  opacity: 0;
+  animation: slideText 9s infinite;
+}
+
+.text-slider .slide:nth-child(1) { animation-delay: 0s; }
+.text-slider .slide:nth-child(2) { animation-delay: 3s; }
+.text-slider .slide:nth-child(3) { animation-delay: 6s; }
+
+@keyframes slideText {
+  0% { opacity: 0; transform: translateY(100%); }
+  10% { opacity: 1; transform: translateY(0); }
+  30% { opacity: 1; }
+  40% { opacity: 0; transform: translateY(-100%); }
+  100% { opacity: 0; }
+}
+
+</style>
 </head>
-<body>
 
-  <!-- NAVBAR -->
-  <nav>
-    <div class="nav-inner">
-      <div class="logo" style="font-weight:700; font-size:18px; color:#4f46e5;">
-        Pro <span style="color:#111827; font-weight:700;">Developing.</span>
-      </div>
 
-      <!-- WhatsApp icon on right (replace number if needed) -->
-      <div>
-        <a href="https://wa.me/916356952788?text=Hello%20MS%20Developing!%20👋" target="_blank"
-           style="color:#16a34a; font-size:22px; text-decoration:none;">
-          <i class="fa-brands fa-whatsapp"></i>
-        </a>
-      </div>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-black w3-card">
+    <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+    <a href="#band" class="w3-bar-item w3-button w3-padding-large w3-hide-small">ABOUT</a>
+    <a href="#tool" class="w3-bar-item w3-button w3-padding-large w3-hide-small">TOOL</a>
+    <a href="#tour" class="w3-bar-item w3-button w3-padding-large w3-hide-small">DEMOS</a>
+    <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small">CONTACT</a>
+    <div class="w3-dropdown-hover w3-hide-small">
     </div>
-  </nav>
+    <a href="javascript:void(0)" class="w3-padding-large w3-hover-red w3-hide-small w3-right"><i class="fa fa-search"></i></a>
+  </div>
+</div>
 
-  <div class="page-wrapper">
-    <div class="header-spacer"></div>
+<!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+<div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
+  <a href="#band" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">ABOUT</a>
+  <a href="#tool" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">TOOL</a>
+  <a href="#tour" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">DEMOS</a>
+  <a href="#contact" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">CONTACT</a>
+</div>
 
-    <!-- MAIN CARD -->
-    <div class="card">
-      <h1 style="font-size:18px; font-weight:700; margin-bottom:10px;">Download YouTube Thumbnail</h1>
+<!-- Page content -->
+<div class="w3-content" style="max-width:2000px;margin-top:46px">
 
-      <input type="text" id="videoUrl" placeholder="Enter YouTube video URL" />
-      <select id="quality">
-        <option value="maxresdefault">Max Quality</option>
-        <option value="hqdefault">High Quality</option>
-        <option value="mqdefault">Medium Quality</option>
-        <option value="default">Low Quality</option>
-      </select> <br>
-
-     <br> <button class="btn-download" onclick="downloadThumbnail()">Download</button>
-
-      <!-- Loader -->
-      <div id="loader" class="bars" style="margin-top:14px; display:none;">
-        <div class="bar" style="--i:1"></div>
-        <div class="bar" style="--i:2"></div>
-        <div class="bar" style="--i:3"></div>
-        <div class="bar" style="--i:4"></div>
-        <div class="bar" style="--i:5"></div>
-        <div class="bar" style="--i:6"></div>
-        <div class="bar" style="--i:7"></div>
-        <div class="bar" style="--i:8"></div>
-        <div class="bar" style="--i:9"></div>
-      </div>
+  <!-- Automatic Slideshow Images -->
+  <div class="mySlides w3-display-container w3-center">
+    <img src="sheets.jpeg" style="width:100%">
+    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+      <h3></h3>
+      <p><b></b></p>   
+    </div>
+  </div>
+   <div class="mySlides w3-display-container w3-center">
+    <img src="email.jpeg" style="width:100%">
+    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+      <h3></h3>
+      <p><b></b></p>   
+    </div>
+  </div>
+   <div class="mySlides w3-display-container w3-center">
+    <img src="whatsapp.jpeg" style="width:100%">
+    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+      <h3></h3>
+      <p><b></b></p>   
     </div>
   </div>
 
-  <!-- Center Popup -->
-  <div class="popup" id="popup"></div>
+  <!-- The Band Section -->
+  <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
+    <h2 class="w3-wide">Pro DEWELOPING.</h2>
+    <p class="w3-opacity"><i>We simple Demos</i></p>
+    <p class="w3-justify">1. Send Contact Form Data to WhatsApp
+Is form integration ke zariye user ka naam, email aur message WhatsApp pe direct bheja ja sakta hai. Jab koi user "Submit" button press karta hai, unka message aapke WhatsApp number pe automatically open ho jata hai – bina kisi backend ya complex setup ke. Ye small business aur instant chat support ke liye perfect solution hai. <br>
 
-  <!-- FIXED FOOTER (bottom center) -->
-  <footer class="fixed-footer" role="contentinfo" aria-label="Footer">
-    <div class="footer-inner">
-      <div style="display:flex; align-items:center; gap:10px;">
+<br>
+2. Send Contact Form Data to Gmail
+Is form se submit ki gayi details direct aapke Gmail inbox me email ke form me pahuchti hai. Ye setup email automation services (jaise Formsubmit ya Google Apps Script) ke zariye banaya ja sakta hai. Simple aur reliable option hai professional communication ke liye. <br>
+
+<br>
+3. Save Contact Form Data to Google Sheets
+Is setup se form ke through collect ki gayi information automatically Google Sheets me store ho jaati hai. Ye real-time data collection aur CRM/lead tracking ke liye ideal hai. Isko Google Apps Script ka use karke configure kiya ja sakta hai <br></p>
+  
+ </div>
+<!-- MY TOOLS Section -->
+  <div class="w3-container w3-content w3-padding-64" style="max-width:1200px" id="tool">
+    <h2 class="w3-wide w3-center">MY TOOLS</h2>
+    <p class="w3-opacity w3-center"><i>Free & Useful Tools Created by Us</i></p>
+
+    <div class="tools-grid">
+      <div class="tool-card">
+        <h3>Age calculater</h3>
+        <p>Type Your Age. We Simple Calculater Age.</p>
+        <a href="https://mpdeveloping.github.io/agecalculater/">Open Tool</a>
       </div>
-      <div style="color:#cbd5e1;">©Power by <a href="https://mpdeveloping.github.io/mpwebsite/" target="_blank">Pro Developing.</a></div>
+      <div class="tool-card">
+        <h3>YouTube Thumbnail Downloader</h3>
+        <p>Download any YouTube video thumbnail.</p>
+        <a href="https://mpdeveloping.github.io/thumbnail_download./">Open Tool</a>
+      </div>
+      <div class="tool-card">
+        <h3>QR Code Genretor</h3>
+        <p>We Enter Any Text to Genretor Qr code In free.</p>
+        <a href="https://mpdeveloping.github.io/Qr-generator/">Open Tool</a>
+      </div>
+      <div class="tool-card">
+        <h3>MB to KB Size convetor</h3>
+        <p>Image Size mb to kb conveter esaily.</p>
+        <a href="https://mpdeveloping.github.io/Mb-To-Kb-converter/">Open Tool</a>
+      </div>
+      <div class="tool-card">
+        <h3>PNG To JPG Convetor</h3>
+        <p>png image to jpg inmage convetor esaily in free.</p>
+        <a href="https://mpdeveloping.github.io/png_to_jpg./">Open Tool</a>
+      </div>
+      <div class="tool-card">
+        <h3>Passwor Genretor</h3>
+        <p>type name and namber ve genretor password esaliy.</p>
+        <a href="https://mpdeveloping.github.io/passwordgenretor/">Open Tool</a>
+      </div>
+     
     </div>
-  </footer>
+  </div>
 
-  <script>
-    function showPopup(message) {
-      const popup = document.getElementById('popup');
-      popup.textContent = message;
-      popup.style.display = 'block';
-      // auto hide after 2.5s
-      clearTimeout(popup._hideTimeout);
-      popup._hideTimeout = setTimeout(() => {
-        popup.style.display = 'none';
-      }, 2500);
-    }
 
-    function extractVideoID(url) {
-      const regExp = /^.*(?:youtu.be\/|v\/|embed\/|watch\?v=|watch\?.+&v=)([^#&?]{11}).*/;
-      const match = url.match(regExp);
-      return match ? match[1] : null;
-    }
+  </div>
+</div>
 
-    async function downloadThumbnail() {
-      const loader = document.getElementById('loader');
-      const url = document.getElementById('videoUrl').value.trim();
-      const quality = document.getElementById('quality').value;
 
-      if (!url) {
-        return showPopup('⚠️ Please enter a YouTube URL first!');
-      }
 
-      const videoId = extractVideoID(url);
-      if (!videoId) {
-        return showPopup('⚠️ Invalid YouTube URL');
-      }
+  
+  <!-- The Tour Section -->
+  <div class="w3-black" id="tour">
+      <div class="w3-row-padding w3-padding-32" style="margin:0 -16px">
+        <div class="w3-third w3-margin-bottom">
+          <img src="sheets.jpeg" alt="New York" style="width:100%" class="w3-hover-opacity">
+          <div class="w3-container w3-white">
+            <p><b>Html Form Data Save Google Sheets.</b></p>
+            <p class="w3-opacity"> &#8377; 99 only</p>
+            <p>We Simple Customer Data Html Form to google sheets Save.</p>
+            <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Send Enquiry</button>
+          </div>
+        </div>
+        <div class="w3-third w3-margin-bottom">
+          <img src="email.jpeg" alt="Paris" style="width:100%" class="w3-hover-opacity">
+          <div class="w3-container w3-white">
+            <p><b>Html Form Data Send To Email.</b></p>
+            <p class="w3-opacity">&#8377; 99 only</p>
+            <p>We Simple Customer data send to Email address.</p>
+            <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Send Enquiry</button>
+          </div>
+        </div>
+        <div class="w3-third w3-margin-bottom">
+          <img src="whatsapp.jpeg" alt="San Francisco" style="width:100%" class="w3-hover-opacity">
+          <div class="w3-container w3-white">
+            <p><b>Html Form Data Send to Whatsapp.</b></p>
+            <p class="w3-opacity">&#8377; 99 only</p>
+            <p>We Customer data send to whatsapp.</p>
+            <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Send Enquiry</button>
+          </div>
+        </div>
+      </div>
+    </div>
+   
+  </div>
 
-      loader.style.display = 'flex';
-      try {
-        const imageUrl = `https://img.youtube.com/vi/${videoId}/${quality}.jpg`;
-        const response = await fetch(imageUrl);
-        if (!response.ok) throw new Error('Not found');
-        const blob = await response.blob();
-        const downloadUrl = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = downloadUrl;
-        a.download = `${videoId}_${quality}.jpg`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(downloadUrl);
-        showPopup('✅ Thumbnail downloaded successfully!');
-      } catch (err) {
-        showPopup('❌ Download failed.');
-      } finally {
-        loader.style.display = 'none';
-      }
-    }
-  </script>
-</body>
-</html>
+ <!-- Enquiry Modal -->
+<div id="ticketModal" class="w3-modal">
+  <div class="w3-modal-content w3-animate-top w3-card-4">
+    <header class="w3-container w3-teal w3-center w3-padding-32"> 
+      <span onclick="document.getElementById('ticketModal').style.display='none'" 
+     class="w3-button w3-teal w3-xlarge w3-display-topright">×</span>
+      <h2 class="w3-wide"><i class="fa fa-envelope w3-margin-right"></i>Send Enquiry</h2>
+    </header>
+    <div class="w3-container">
+      <form action="https://formsubmit.co/prodeveloping97@gmail.com" method="POST">
+       <input type="hidden" name="_captcha" value="false">
+        <p><label><i class="fa fa-user"></i> Name</label></p>
+        <input class="w3-input w3-border" type="text" name="Name" placeholder="Enter your name" required>
+
+        <p><label><i class="fa fa-envelope"></i> Email</label></p>
+        <input class="w3-input w3-border" type="email" name="Email" placeholder="Enter your email" required>
+
+        <p><label><i class="fa fa-phone"></i> Phone Number</label></p>
+        <input class="w3-input w3-border" type="text" name="Phone" placeholder="Enter your phone number" required>
+
+        <p><label><i class="fa fa-comments"></i> Message</label></p>
+        <textarea class="w3-input w3-border" name="Message" placeholder="Your message here..." required></textarea>
+
+        <p><label><i class="fa fa-list"></i> Type</label></p>
+        <select class="w3-input w3-border" name="Type" required>
+          <option value="" disabled selected>Select Type</option>
+          <option value="Form to Google Sheets">Html Form Data Save Google Sheets.</option>
+          <option value="Form to Email">Html Form Data Send To Email.</option>
+          <option value="Form to WhatsApp">Html Form Data Send to Whatsapp.</option>
+        </select>
+
+        <button class="w3-button w3-teal w3-margin-top w3-right" type="submit">Send Enquiry <i class="fa fa-paper-plane"></i></button>
+      </form>
+      <button class="w3-button w3-red w3-margin-top" onclick="document.getElementById('ticketModal').style.display='none'">Close <i class="fa fa-remove"></i></button>
+    </div>
+  </div>
+</div>
+
+  <!-- The Contact Section -->
+  <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="contact">
+    <h2 class="w3-wide w3-center">CONTACT</h2>
+    <p class="w3-opacity w3-center"><i>Fan? Drop a note!</i></p>
+    <div class="w3-row w3-padding-32">
+      <div class="w3-col m6 w3-large w3-margin-bottom">
+        <i class="fa fa-map-marker" style="width:30px"></i> Tharad, IND<br>
+        <i class="fa fa-phone" style="width:30px"></i> Phone: +91 6356952788<br>
+        <i class="fa fa-envelope" style="width:30px"> </i> Email: Prodeveloping97@gmail.com<br>
+      </div>
+      <div class="w3-col m6">
+        <form action="https://formsubmit.co/prodeveloping97@gmail.com" method="POST" enctype="multipart/form-data" target="_blank">
+         <input type="hidden" name="_captcha" value="false">
+          <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
+            <div class="w3-half">
+              <input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">
+            </div>
+            <div class="w3-half">
+              <input class="w3-input w3-border" type="text" placeholder="Email" required name="Email">
+            </div>
+          </div>
+          <input class="w3-input w3-border" type="text" placeholder="Message" required name="Message">
+          <button class="w3-button w3-black w3-section w3-right" type="submit">SEND</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+<!-- End Page Content -->
+</div>
+<div class="follow-section">
+    <h2>Join Our Movement</h2>
+    <p>We are more than a brand; we are a community that believes in dreaming big. <br />Share the joy of Pro Developing with your friends and family.</p>
+    <a href="https://www.instagram.com/mahipat_suthar_09?igsh=aGJjMW04cW10MDA4" target="_blank" class="follow-btn">Follow us on Instagram</a>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-about">
+        <h3>Pro Developing.</h3>
+        <p>Simple and Professional page and best Website template for free Download.</p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/mahipat_suthar_09?igsh=aGJjMW04cW10MDA4" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://youtube.com/@mahipatsuthar-e3h?si=WMFQpZwwRmeoFgGp" target="_blank"><i class="fab fa-youtube"></i></a>
+          <a href="https://wa.me/916356952788" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <h4>Quick Tools</h4>
+        <a href="#">QR Genretor</a>
+        <a href="#">Age Calculater</a>
+        <a href="#">PDF Password Unlock</a>
+        <a href="#">MB To KB Size Convetor</a>
+      </div>
+
+      <div class="footer-company">
+        <h4>Service</h4>
+        <a href="#">e-commerce website built.</a>
+        <a href="#">Data Send and receive simple website.</a>
+      </div>
+
+      <div class="footer-contact">
+        <h4>Get in Touch</h4>
+        <p><i class="fas fa-map-marker-alt"></i> Tharad, IND</p>
+        <p><i class="fas fa-phone"></i> +91 6356952788</p>
+        <p><i class="fas fa-envelope"></i> prodeveloping97@gmail.com</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      © 2026 Pro Developing. All Rights Reserved.
+    </div>
+    </footer>
+
+<script>
+// Automatic Slideshow - change image every 4 seconds
+var myIndex = 0;
+carousel();
+
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  myIndex++;
+  if (myIndex > x.length) {myIndex = 1}    
+  x[myIndex-1].style.display = "block";  
+  setTimeout(carousel, 4000);    
+}
+
+// Used to toggle the menu on small screens when clicking on the menu button
+function myFunction() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+
+// When the user clicks anywhere outside of the modal, close it
+var modal = document.getElementById('ticketModal');
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+var myIndex = 0;
+carousel();
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {x[i].style.display = "none";}
+  myIndex++;
+  if (myIndex > x.length) {myIndex = 1}
+  x[myIndex-1].style.display = "block";
+  setTimeout(carousel, 4000);
+}
+function myFunction() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {x.className += " w3-show";}
+  else {x.className = x.className.replace(" w3-show", "");}
+}
+let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  let slides = document.getElementsByClassName("mySlides");
+  for (let i = 0; i < slides.length; i++) {
+     slides[i
