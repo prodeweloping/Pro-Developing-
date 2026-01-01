@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form data Prodev</title>
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* CSS Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg,  0%,  100%);
+            color: red;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* TOP SECTION - IMAGE SLIDER */
+        .slider-section {
+            margin-bottom: 60px;
+        }
+
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .slider {
+            display: flex;
+            width: 300%;
+            height: 100%;
+            transition: transform 0.8s ease-in-out;
+        }
+
+        .slide {
+            width: 33.333%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .slide-1 {
+            background-image: url('e.png');
+        }
+
+        .slide-2 {
+            background-image: url('s.png');
+        }
+
+        .slide-3 {
+            background-image: url('w.png');
+        }
+
+        .slider-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .indicator.active {
+            background-color: #fff;
+        }
+
+        /* SECOND SECTION - 3 CARDS */
+        .cards-section {
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #2c3e50;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #3498db, #2ecc71);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+        }
+
+        .card-image {
+            height: 200px;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .card-description {
+            color: #7f8c8d;
+            margin-bottom: 25px;
+            font-size: 1rem;
+        }
+
+        .card-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-preview {
+            background-color: #3498db;
+            color: white;
+            flex: 1;
+        }
+
+        .btn-preview:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .btn-buy {
+            background-color: #2ecc71;
+            color: white;
+            flex: 1;
+        }
+
+        .btn-buy:hover {
+            background-color: #27ae60;
+            transform: translateY(-2px);
+        }
+
+        /* BUY NOW POPUP MODAL */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background-color: #fff;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 500px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transform: translateY(20px);
+            transition: transform 0.4s ease;
+        }
+
+        .modal-overlay.active .modal {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            color: #2c3e50;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #7f8c8d;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: #e74c3c;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #34495e;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .btn-submit {
+            background-color: #2ecc71;
+            color: white;
+            width: 100%;
+            padding: 16px;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover {
+            background-color: #27ae60;
+        }
+
+        .btn-submit:disabled {
+            background-color: #95a5a6;
+            cursor: not-allowed;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .cards-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .slider-container {
+                height: 350px;
+            }
+            
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .card-buttons {
+                flex-direction: column;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .slider-container {
+                height: 300px;
+            }
+            
+            .modal {
+                padding: 20px;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+        }
+
+        /* Success/Error Alerts */
+        .alert {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 16px 24px;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1100;
+            transform: translateX(150%);
+            transition: transform 0.4s ease;
+        }
+
+        .alert.active {
+            transform: translateX(0);
+        }
+
+        .alert-success {
+            background-color: #2ecc71;
+        }
+
+        .alert-error {
+            background-color: #e74c3c;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- TOP SECTION - IMAGE SLIDER -->
+        <section class="slider-section">
+            <div class="slider-container">
+                <div class="slider">
+                    <div class="slide slide-1"></div>
+                    <div class="slide slide-2"></div>
+                    <div class="slide slide-3"></div>
+                </div>
+                <div class="slider-indicators">
+                    <div class="indicator active" data-slide="0"></div>
+                    <div class="indicator" data-slide="1"></div>
+                    <div class="indicator" data-slide="2"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECOND SECTION - 3 CARDS -->
+        <section class="cards-section">
+            <h2 class="section-title">Featured Products</h2>
+            <div class="cards-container">
+                <!-- Card 1 -->
+                <div class="card">
+                    <div class="card-image" style="background-image: url('e.png');"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Form data to Email</h3>
+                        <p class="card-description">A modern, responsive portfolio template perfect for designers, photographers, and creatives. Showcase your work with style.</p>
+                        <div class="card-buttons">
+                            <button class="btn btn-preview" onclick="window.open('https://example.com/demo1', '_blank')">
+                                <i class="fas fa-external-link-alt"></i> Live Preview
+                            </button>
+                            <button class="btn btn-buy" data-product="Form data to email">
+                                <i class="fas fa-shopping-cart"></i> Buy Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="card">
+                    <div class="card-image" style="background-image: url('s.png');"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Form data to Google Sheets</h3>
+                        <p class="card-description">Professional business website template with corporate design, perfect for companies, startups, and service providers.</p>
+                        <div class="card-buttons">
+                            <button class="btn btn-preview" onclick="window.open('https://example.com/demo2', '_blank')">
+                                <i class="fas fa-external-link-alt"></i> Live Preview
+                            </button>
+                            <button class="btn btn-buy" data-product="Form data to Google sheet">
+                                <i class="fas fa-shopping-cart"></i> Buy Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="card">
+                    <div class="card-image" style="background-image: url('w.png');"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Form data to WhatsApp</h3>
+                        <p class="card-description">Full-featured e-commerce template with product catalog, shopping cart, and checkout functionality.</p>
+                        <div class="card-buttons">
+                            <button class="btn btn-preview" onclick="window.open('https://example.com/demo3', '_blank')">
+                                <i class="fas fa-external-link-alt"></i> Live Preview
+                            </button>
+                            <button class="btn btn-buy" data-product="Form data to WhatsApp">
+                                <i class="fas fa-shopping-cart"></i> Buy Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- BUY NOW POPUP MODAL -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Complete Your Order</h3>
+                <button class="close-modal" id="closeModal">&times;</button>
+            </div>
+            <form id="orderForm">
+                <div class="form-group">
+                    <label class="form-label" for="userName">Full Name</label>
+                    <input type="text" id="userName" name="user_name" class="form-input" placeholder="Enter your full name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="userEmail">Email Address</label>
+                    <input type="email" id="userEmail" name="user_email" class="form-input" placeholder="Enter your email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="userPhone">Phone Number</label>
+                    <input type="tel" id="userPhone" name="user_phone" class="form-input" placeholder="Enter your phone number" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="productName">Selected Product</label>
+                    <input type="text" id="productName" name="product_name" class="form-input" readonly>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="message">Additional Message</label>
+                    <textarea id="message" name="message" class="form-input" rows="3" placeholder="Any special requirements or questions..."></textarea>
+                </div>
+                
+                <!-- Hidden field for date & time -->
+                <input type="hidden" id="orderDateTime" name="order_date_time">
+                
+                <button type="submit" class="btn btn-submit" id="submitBtn">
+                    <i class="fas fa-paper-plane"></i> Submit Order
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Alert Container -->
+    <div class="alert" id="alert"></div>
+
+    <script>
+        // EmailJS Credentials (from requirements)
+        const EMAILJS_SERVICE_ID = 'service_dlp7rin';
+        const EMAILJS_TEMPLATE_ID = 'template_vvvb4th';
+        const EMAILJS_PUBLIC_KEY = 'DtAkzuPCKhflhYc5S';
+
+        // DOM Elements
+        const slider = document.querySelector('.slider');
+        const indicators = document.querySelectorAll('.indicator');
+        const buyButtons = document.querySelectorAll('.btn-buy');
+        const modalOverlay = document.getElementById('modalOverlay');
+        const closeModalBtn = document.getElementById('closeModal');
+        const orderForm = document.getElementById('orderForm');
+        const productNameField = document.getElementById('productName');
+        const dateTimeField = document.getElementById('orderDateTime');
+        const submitBtn = document.getElementById('submitBtn');
+        const alertBox = document.getElementById('alert');
+
+        // Image Slider Variables
+        let currentSlide = 0;
+        const totalSlides = 3;
+        const slideInterval = 4000; // 4 seconds for auto-sliding
+
+        // Initialize EmailJS
+        (function() {
+            emailjs.init(EMAILJS_PUBLIC_KEY);
+            console.log("EmailJS initialized with Public Key:", EMAILJS_PUBLIC_KEY);
+        })();
+
+        // Set current date and time in hidden field
+        function setDateTime() {
+            const now = new Date();
+            const formattedDateTime = now.toLocaleString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+            dateTimeField.value = formattedDateTime;
+        }
+
+        // Show alert message
+        function showAlert(message, type) {
+            alertBox.textContent = message;
+            alertBox.className = `alert alert-${type}`;
+            alertBox.classList.add('active');
+            
+            setTimeout(() => {
+                alertBox.classList.remove('active');
+            }, 4000);
+        }
+
+        // Image Slider Functions
+        function goToSlide(slideIndex) {
+            if (slideIndex < 0) slideIndex = totalSlides - 1;
+            if (slideIndex >= totalSlides) slideIndex = 0;
+            
+            currentSlide = slideIndex;
+            slider.style.transform = `translateX(-${currentSlide * 33.333}%)`;
+            
+            // Update indicators
+            indicators.forEach((indicator, index) => {
+                if (index === currentSlide) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            });
+        }
+
+        function nextSlide() {
+            goToSlide(currentSlide + 1);
+        }
+
+        // Initialize slider
+        function initSlider() {
+            // Auto slide every 4 seconds
+            setInterval(nextSlide, slideInterval);
+            
+            // Add click events to indicators
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    goToSlide(index);
+                });
+            });
+        }
+
+        // Modal Functions
+        function openModal(productName) {
+            productNameField.value = productName;
+            setDateTime(); // Update date/time each time modal opens
+            modalOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        }
+
+        function closeModal() {
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Restore scrolling
+            orderForm.reset(); // Reset form when closing
+        }
+
+               // Form Submission with EmailJS
+        async function handleFormSubmit(e) {
+            e.preventDefault();
+            
+            // Disable submit button to prevent multiple submissions
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+            
+            try {
+                // Send form data using EmailJS
+                const response = await emailjs.sendForm(
+                    EMAILJS_SERVICE_ID,
+                    EMAILJS_TEMPLATE_ID,
+                    orderForm
+                );
+                
+                console.log('EmailJS Response:', response);
+                
+                // Show success message
+                showAlert('Thank you for your order! We will contact you soon.', 'success');
+                
+                // Close modal after successful submission
+                setTimeout(() => {
+                    closeModal();
+                }, 1500);
+                
+            } catch (error) {
+                console.error('EmailJS Error:', error);
+                showAlert('Sorry, there was an error submitting your order. Please try again.', 'error');
+            } finally {
+                // Re-enable submit button
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Order';
+            }
+        }
+
+        // Event Listeners
+        buyButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const productName = button.getAttribute('data-product');
+                openModal(productName);
+            });
+        });
+
+        closeModalBtn.addEventListener('click', closeModal);
+
+        // Close modal when clicking outside of it
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) {
+                closeModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+                closeModal();
+            }
+        });
+
+        // Form submission
+        orderForm.addEventListener('submit', handleFormSubmit);
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            initSlider();
+            console.log("Website initialized. EmailJS configured.");
+        });
+    </script>
+</body>
+</html> 
