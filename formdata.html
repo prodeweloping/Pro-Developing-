@@ -370,6 +370,17 @@
         .alert-error {
             background-color: #e74c3c;
         }
+         .price-tag {
+            background: linear-gradient(90deg, #00b894, #00a085);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1.8rem;
+            margin: 20px 0;
+            display: inline-block;
+            box-shadow: 0 5px 15px rgba(0, 184, 148, 0.3);
+        }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 </head>
@@ -400,12 +411,13 @@
                     <div class="card-image" style="background-image: url('e.png');"></div>
                     <div class="card-content">
                         <h3 class="card-title">Form data to Email</h3>
-                        <p class="card-description">A modern, responsive portfolio template perfect for designers, photographers, and creatives. Showcase your work with style.</p>
+                        <div class="price-tag">₹299</div>
+                        <p class="card-description">A secure and reliable form data to email solution that instantly delivers user submissions directly to your inbox with ease.</p>
                         <div class="card-buttons">
-                            <button class="btn btn-preview" onclick="window.open('https://example.com/demo1', '_blank')">
+                            <button class="btn btn-preview" onclick="window.open('https://prodeweloping.github.io/Data-to-email-/#', '_blank')">
                                 <i class="fas fa-external-link-alt"></i> Live Preview
                             </button>
-                            <button class="btn btn-buy" data-product="Form data to email">
+                            <button class="btn btn-buy" data-product="Form data to email (₹299)">
                                 <i class="fas fa-shopping-cart"></i> Buy Now
                             </button>
                         </div>
@@ -417,12 +429,13 @@
                     <div class="card-image" style="background-image: url('s.png');"></div>
                     <div class="card-content">
                         <h3 class="card-title">Form data to Google Sheets</h3>
-                        <p class="card-description">Professional business website template with corporate design, perfect for companies, startups, and service providers.</p>
+                         <div class="price-tag">₹199</div>
+                        <p class="card-description">Automatically send and store your website form data directly into Google Sheets for easy access, tracking, and management.</p>
                         <div class="card-buttons">
                             <button class="btn btn-preview" onclick="window.open('https://example.com/demo2', '_blank')">
                                 <i class="fas fa-external-link-alt"></i> Live Preview
                             </button>
-                            <button class="btn btn-buy" data-product="Form data to Google sheet">
+                            <button class="btn btn-buy" data-product="Form data to Google sheet (₹199)">
                                 <i class="fas fa-shopping-cart"></i> Buy Now
                             </button>
                         </div>
@@ -434,12 +447,13 @@
                     <div class="card-image" style="background-image: url('w.png');"></div>
                     <div class="card-content">
                         <h3 class="card-title">Form data to WhatsApp</h3>
-                        <p class="card-description">Full-featured e-commerce template with product catalog, shopping cart, and checkout functionality.</p>
+                        <div class="price-tag">₹99</div> 
+                        <p class="card-description">Instantly send website form data directly to WhatsApp for quick notifications and faster communication.</p>
                         <div class="card-buttons">
-                            <button class="btn btn-preview" onclick="window.open('https://example.com/demo3', '_blank')">
+                            <button class="btn btn-preview" onclick="window.open('https://prodeweloping.github.io/Data-to-WhatsApp-/', '_blank')">
                                 <i class="fas fa-external-link-alt"></i> Live Preview
                             </button>
-                            <button class="btn btn-buy" data-product="Form data to WhatsApp">
+                            <button class="btn btn-buy" data-product="Form data to WhatsApp (₹99)">
                                 <i class="fas fa-shopping-cart"></i> Buy Now
                             </button>
                         </div>
@@ -602,7 +616,7 @@
         async function handleFormSubmit(e) {
             e.preventDefault();
             
-            // Disable submit button to prevent multiple submissions
+             // Disable submit button to prevent multiple submissions
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
             
